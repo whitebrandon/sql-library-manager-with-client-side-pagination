@@ -1,0 +1,27 @@
+{
+  "name": "techdegree-project-8",
+  "version": "1.0.0",
+  "description": "SQL Library Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whitebrandon/techdegree-project-8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whitebrandon/techdegree-project-8/issues"
+  },
+  "homepage": "https://github.com/whitebrandon/techdegree-project-8#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "sequelize": "^5.21.2",
+    "sqlite3": "^4.1.0"
+  }
+}

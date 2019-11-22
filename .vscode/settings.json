@@ -1,9 +1,0 @@
-{
-    "sqltools.connections": [
-        {
-            "database": "${workspaceFolder}\\library.db",
-            "dialect": "SQLite",
-            "name": "techdegree-project-8"
-        }
-    ]
-}
