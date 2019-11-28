@@ -3,7 +3,7 @@ extends layout
 block content
     h1 Update Book
     form
-        p
+        p.title
             label(for='title')= book.title
             input#title(name='title', type='text', value=book.title)
         p
