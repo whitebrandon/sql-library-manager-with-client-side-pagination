@@ -3,8 +3,9 @@ const router = express.Router();
 const { Book } = require('../models');
 
 /* READs full list of books. */
-router.get('/', (req, res) => {
-  res.render('index');
+router.get('/', async (req, res) => {
+  const books = await Book.findAll();
+  res.render('index', {books: books.map(book => book = book.dataValues)});
 });
 
 /* READs the "create a new book" form. */
@@ -13,7 +14,8 @@ router.get('/new', (req, res) => {
 });
 
 /* CREATEs a new book and adds it to the database */
-router.post('/new', (req, res) => {
+router.post('/new', async (req, res) => {
+  await Book.create(req.body);
   res.redirect('/books')
 });
 
