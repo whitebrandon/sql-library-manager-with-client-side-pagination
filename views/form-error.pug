@@ -8,18 +8,18 @@ block content
             li Author is required
             li Name is required
         p
-            label(for='title') Title
+            label(for='title')= book.title
             input#title(name='title', type='text')
         p
-            label(for='author') Author
+            label(for='author')= book.author
             input#author(name='author', type='text')
         p
-            label(for='genre') Genre
+            label(for='genre')= book.genre
             input#genre(name='genre', type='text')
         p
-            label(for='year') Year
+            label(for='year')= book.year
             input#year(name='year', type='text')
         p
             input(type='submit', value='Create New Book')
         p
-            a.button(href='all_books.html') Cancel
+            a.button(href='/') Cancel

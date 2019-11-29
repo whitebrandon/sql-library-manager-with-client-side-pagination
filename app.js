@@ -1,7 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
 
-
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 
@@ -9,6 +8,8 @@ const app = express();
 
 // view engine setup
 app.set('view engine', 'pug');
+
+app.use(express.json());
 
 // ↓ Parses incoming requests w/ urlencoded payloads and adds body object to req
 app.use(express.urlencoded({ extended: false }));  

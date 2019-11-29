@@ -4,19 +4,34 @@ const { Book } = require('../models');
 
 /* READs full list of books. */
 router.get('/', async (req, res) => {
-  const books = await Book.findAll();
-  res.render('index', {books: books.map(book => book = book.dataValues)});
+  try {
+    const books = await Book.findAll();
+    res.render('index', {books: books.map(book => book = book.dataValues)});
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 /* READs the "create a new book" form. */
 router.get('/new', (req, res) => {
-  res.render('new-book');
+  try {
+    res.render('new-book');
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 /* CREATEs a new book and adds it to the database */
 router.post('/new', async (req, res) => {
-  await Book.create(req.body);
-  res.redirect('/books')
+  try {
+    await Book.create(req.body);
+    res.redirect('/books')
+  } catch (error) {
+    if (error.name === 'SequelizeValidationError') {
+      // do something here
+    }
+    console.error(error);
+  }
 });
 
 /* READs the "book detail" form */
@@ -31,13 +46,28 @@ router.get('/:id', async (req, res) => {
 });
 
 /* UPDATEs book info and saves it to the database */
-router.post('/:id', (req, res) => {
-  res.redirect('/books')
+router.post('/:id', async (req, res) => {
+  try {
+    const book = await Book.findByPk(req.params.id);
+    await Book.update(req.body, {where: { id: book.id}});
+    res.redirect('/books')
+  } catch (error) {
+    if (error.name === 'SequelizeValidationError') {
+      // do something here
+    }
+    console.error(error);
+  }
 });
 
 /* DELETEs a book */
-router.post('/:id/delete', (req, res) => {
-  res.redirect('/books')
+router.post('/:id/delete', async (req, res) => {
+  try {
+    const book = await Book.findByPk(req.params.id);
+    await Book.destroy({where: {id: book.id}});
+    res.redirect('/books')
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 module.exports = router;
