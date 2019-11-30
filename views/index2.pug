@@ -14,12 +14,10 @@ block content
                     th Genre
                     th Year
             tbody
-                each book, i in books
+                each book in books
                     tr
                         td
-                            - var offset = (active * 10)
-                            a(href=`/books/${book.id}`)= (i + offset - 9) + ': ' + book.title
+                            a(href=`/books/${book.id}`)= book.title
                         td= book.author
                         td= book.genre
                         td= book.year
-        include pagination

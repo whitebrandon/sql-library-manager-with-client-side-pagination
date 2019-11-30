@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1 New Book
-    form(action='/books/new', method='post')
+    form.create-entry(action='/books/new', method='post')
         p
             label(for='title') Title
             input#title(name='title', type='text')
@@ -15,7 +15,8 @@ block content
         p
             label(for='year') Year
             input#year(name='year', type='text')
+        hr
         p
-            input(type='submit', value='Create New Book')
+            input.save-book(type='submit', value='Create New Book')
         p
             a.button(href='/books') Cancel
