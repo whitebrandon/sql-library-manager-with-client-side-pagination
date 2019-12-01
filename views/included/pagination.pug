@@ -1,0 +1,10 @@
+- var i = 1
+- var num_of_pages = fullResults/10
+- var active_page = active
+if num_of_pages > 1
+    .pagination
+        while i < num_of_pages + 1
+            if (i === active_page)
+                a.active(href=`/books/pg/${i+1}`)= i++
+            else 
+                a(href=`/books/pg/${i}`)= i++

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1.page-title Confirm Deletion
+    form.confirm-delete(method='post', action=`/books/${book.id}/confirm`)
+        p= 'Do you really want to delete ' + book.title +'?'
+        p
+            input(type='submit', value='Yes  ')
+        p
+            a.button(href='/') Cancel

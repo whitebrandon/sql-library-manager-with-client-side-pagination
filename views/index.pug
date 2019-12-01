@@ -1,0 +1,24 @@
+extends layout
+
+block content
+        include included/search-form
+        h1 Books
+        p
+            a.button.new-book(href='/books/new') Add New Title
+        table.content-table-index
+            thead
+                tr
+                    th Title
+                    th Author
+                    th Genre
+                    th Year
+            tbody
+                each book, i in books
+                    tr
+                        td
+                            - var offset = (active * 10)
+                            a(href=`/books/${book.id}`)= (i + offset - 9) + ': ' + book.title
+                        td= book.author
+                        td= book.genre
+                        td= book.year
+        include included/pagination

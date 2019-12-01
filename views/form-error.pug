@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h2.error Oooops!
+    ul.error
+        each err in error
+            li= err.message
+    if (book !== null)
+        include included/update
+    else
+        include included/new

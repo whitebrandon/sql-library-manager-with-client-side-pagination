@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+.app-banner {
+  display: flex;
+  width: 100%;
+}
+.app-banner h1 {
+  margin: 0 auto;
+}
+
+.page-title {
+  width: 100%;
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 1078px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.wrapper h1 {
+  flex-grow: 1;
+}
+.wrapper h1:hover {
+  color: red;
+}
+.wrapper h1 ~ p {
+  width: fit-content;
+  padding: 6px 8px;
+}
+
+.book-search {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.book-search input {
+  padding-left: 8px;
+}
+
+.clear-cookie {
+  order: -1;
+  margin-right: 16px;
+  align-self: flex-end;
+}
+
+.content-table-index {
+  margin: auto;
+  width: 100%;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+.content-table-index th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.125em;
+  font-weight: 800;
+  border-bottom: 2px solid #111111;
+  border-top: 1px solid #999;
+  text-align: left;
+  padding: 7px 10px 10px 10px;
+}
+.content-table-index td {
+  border: 2px solid rgba(0, 0, 0, 0.205);
+  padding: 7px 10px 10px 10px;
+}
+.content-table-index tr:hover {
+  background-color: #c3e6e5;
+}
+.content-table-index tbody tr:nth-child(odd) {
+  background: #fbe1c2;
+}
+
+.pagination {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  align-self: center;
+}
+.pagination a {
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+}
+.pagination a:hover {
+  background: #041219;
+}
+.pagination .active, .pagination .active:hover {
+  background: #9b590a;
+  color: #041219;
+}
+
+form {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+form p {
+  width: 100%;
+  display: flex;
+}
+form p input {
+  flex-grow: 3;
+}
+form p label {
+  width: 48px;
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=style.css.map */
