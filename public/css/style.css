@@ -3,79 +3,72 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: initial;
+}
+
 body {
-  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
-  margin: 0;
-  padding: 0;
-  padding-bottom: 1em;
 }
 
 .app-banner {
+  display: flex;
   width: 100%;
-  background: #fbe1c2;
-  color: #1d82b3;
-  padding: 16px;
 }
 .app-banner h1 {
   margin: 0 auto;
-  font-size: 4em;
+}
+
+.page-title {
+  width: 100%;
   text-align: center;
 }
 
-h1 {
-  text-align: center;
-}
-
-/* ======================================== 
-                Home Page
-   ======================================== */
 .wrapper {
+  max-width: 1078px;
+  display: flex;
   margin: 0 auto;
-  padding-bottom: 1em;
-  max-width: 960px;
-  border-radius: 5px;
-  background: #c1e4f5;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
 }
 .wrapper h1 {
-  margin: 0 auto;
-  font-size: 2em;
-  color: #125271;
-  text-align: left;
-  position: relative;
-  top: 1.5em;
-  left: 0.7em;
+  flex-grow: 1;
 }
 .wrapper h1:hover {
-  color: #1d82b3;
+  color: red;
 }
 .wrapper h1 ~ p {
-  width: 97.5%;
-  text-align: right;
-  font-size: 1.125em;
+  width: fit-content;
+  padding: 6px 8px;
 }
 
-.new-book {
-  border: 2px solid grey;
-  padding: 0.625em 0.5em;
-  border-radius: 5px;
-  position: relative;
-  z-index: 1;
-  color: #125271;
+.book-search {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
-.new-book:hover {
-  background: chocolate;
+.book-search input {
+  padding-left: 8px;
 }
 
-a {
-  color: #00B7FF;
-  text-decoration: none;
+.clear-cookie {
+  order: -1;
+  margin-right: 16px;
+  align-self: flex-end;
 }
 
 .content-table-index {
   margin: auto;
-  width: 95%;
+  width: 100%;
   box-sizing: border-box;
   border-collapse: collapse;
 }
@@ -100,127 +93,15 @@ a {
   background: #fbe1c2;
 }
 
-/* ======================================== 
-                New Book
-   ======================================== */
-.create-entry, .update-entry, .confirm-delete {
-  background-color: #1d82b3;
-  border: 1em solid #b3670b;
-  border-radius: 8px;
-  width: 960px;
-  margin: 0 auto;
-  padding: 2em;
-  box-sizing: border-box;
-}
-.create-entry:last-child a, .update-entry:last-child a, .confirm-delete:last-child a {
-  font-size: 1.5em;
-  color: #0b3245;
-}
-.create-entry:last-child a:hover, .update-entry:last-child a:hover, .confirm-delete:last-child a:hover {
-  color: #f4a74a;
-}
-
-.update-entry a {
-  font-size: 1.725em;
-  color: #0b3245;
-}
-.update-entry a:hover {
-  color: black;
-}
-
-.delete-entry {
-  width: 75%;
-  margin: 0 auto;
-  margin-top: -1em;
-  padding: 12px;
-  background: #b3670b;
-  border-radius: 0 0 8px 8px;
-}
-.delete-entry input {
-  background: #b3670b;
-  border: 2px solid #e3830e;
-  width: fit-content;
-  text-align: center;
-  margin: auto;
-  padding: 8px 12px;
-  border-radius: 5px;
-}
-.delete-entry input:hover {
-  background-color: #1d82b3;
-}
-
-.confirm-delete a {
-  -webkit-appearance: push-button;
-  user-select: none;
-  padding: 1px 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-image: initial;
-  width: 99.5%;
-  text-align: center;
-  font-weight: 500;
-}
-.confirm-delete p {
-  font-size: 1.5em;
-}
-.confirm-delete input {
-  color: #0b3245;
-  font-family: "Raleway", sans-serif;
-}
-.confirm-delete input:hover {
-  cursor: pointer;
-  color: #b3670b;
-}
-
-.save-book, .update-book {
-  font-size: 1.5em;
-  padding: 0.5em;
-  width: 100%;
-  margin: 1.5em auto 0;
-  border: 1px solid black;
-  border-radius: 5px;
-  background: #fff;
-}
-.save-book:hover, .update-book:hover {
-  cursor: pointer;
-  background: #b3670b;
-}
-
-label {
-  margin-right: 32px;
-  font-size: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-label, input {
-  display: block;
-  width: 99.5%;
-}
-
-input {
-  font-size: 1.5em;
-  font-weight: 200;
-  line-height: 1.5em;
-  padding-left: 0.5em;
-}
-input:focus {
-  background: #69bee7;
-}
-
-.form-wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
 .pagination {
-  margin-top: 1.5em;
-  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  align-self: center;
 }
 .pagination a {
-  border: 1px solid black;
-  padding: 0.25em 1.5em;
-  margin-right: 12px;
-  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
 }
 .pagination a:hover {
   background: #041219;
@@ -230,32 +111,22 @@ input:focus {
   color: #041219;
 }
 
-.book-search {
-  text-align: right;
-  padding: 12px;
+form {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.book-search input {
-  width: 25%;
-  display: inline-block;
+form p {
+  width: 100%;
+  display: flex;
 }
-.book-search button {
-  margin-left: 5px;
-  position: relative;
-  vertical-align: baseline;
+form p input {
+  flex-grow: 3;
 }
-.book-search button:hover {
-  cursor: pointer;
-  background: #fbe1c2;
-}
-
-.clear-cookie {
-  display: block;
-  font-size: 1.5em;
-  margin-top: 8px;
-  margin-right: 16px;
-}
-.clear-cookie:hover {
-  color: #b3670b;
+form p label {
+  width: 48px;
+  flex-grow: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

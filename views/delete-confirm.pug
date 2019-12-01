@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    h1 Confirm Deletion
+    h1.page-title Confirm Deletion
     form.confirm-delete(method='post', action=`/books/${book.id}/confirm`)
         p= 'Do you really want to delete ' + book.title +'?'
         p

@@ -1,12 +1,11 @@
 extends layout
 
 block content
-    div.wrapper
-        h2.error Oooops!
-        ul.error
-            each err in error
-                li= err.message
-        if (book !== null)
-            include update-book
-        else
-            include new-book
+    h2.error Oooops!
+    ul.error
+        each err in error
+            li= err.message
+    if (book !== null)
+        include included/update
+    else
+        include included/new
