@@ -1,117 +1,71 @@
 const express = require('express');
 const router = express.Router();
 const { Book } = require('../models');
-const Sequelize = require('sequelize');
-const { Op } = Sequelize
+const handler = require('../server-scripts');
 
-/* READs full list of books. */
-router.get('/', async (req, res) => {
-  res.redirect('/books/pg/1')
-});
+/* Clears cookie and redirects */
+router.get('/', handler.asyncHandler(async (req, res) => {
+    res.clearCookie('search_results')
+    res.redirect('/books/pg/1')
+}, Book));
 
-router.post('/', async (req, res) => {
-  const books = await Book.findAll({
-    where: {
-      [Op.or]: [
-        {
-          title: {
-            [Op.like]: `%${req.body.search}%`,
-          }
-        }, 
-        {
-          author: {
-            [Op.like]: `%${req.body.search}%`,
-          }
-        }, 
-        {
-          genre: {
-            [Op.like]: `%${req.body.search}%`,
-          }
-        }, 
-        {
-          year: {
-            [Op.like]: `%${req.body.search}%`,
-          }
-        }]
+/* DECLAREs cookie and sets it to value of search string */
+router.post('/', handler.asyncHandler(async (req, res) => {
+    res.cookie('search_results', req.body.search);
+    res.redirect('/books/pg/1')
+}, Book));
+
+/* READs full list of books with/without cookies */
+router.get('/pg/:id', handler.asyncHandler(async (req, res) => {
+    if (req.cookies.search_results) {
+        const books = await handler.searchWithCookie(Book, req.cookies.search_results, req.params.id);
+        if (books.count > 0) {
+            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(req.params.id), hasCookie: true})
+        } else {
+            res.render('no-results');
+        }
+    } else {
+        const books = await Book.findAndCountAll({offset: (req.params.id * 10) - 10 , limit: 10})
+        res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(req.params.id)});
     }
-  })
-  res.render('index2', {books: books.map(book => book = book)});
-})
-
-router.get('/pg/:id', async (req, res) => {
-  console.log(req.body);
-  const length = await Book.findAll()
-  const books = await Book.findAll({offset: (req.params.id * 10) - 10 , limit: 10})
-  res.render('index', {books: books.map(book => book = book), length: length.length, active: parseInt(req.params.id)});
-})
+}, Book));
 
 /* READs the "create a new book" form. */
-router.get('/new', (req, res) => {
-  try {
+router.get('/new', handler.asyncHandler(async (req, res) => {
     res.render('new-book');
-  } catch (error) {
-    console.error(error);
-  }
-});
+}, Book));
 
 /* CREATEs a new book and adds it to the database */
-router.post('/new', async (req, res) => {
-  try {
+router.post('/new', handler.asyncHandler(async (req, res) => {
     await Book.create(req.body);
     res.redirect('/books')
-  } catch (error) {
-    if (error.name === 'SequelizeValidationError') {
-      // do something here
-    }
-    console.error(error);
-  }
-});
+}, Book));
 
 /* READs the "book detail" form */
-router.get('/:id', async (req, res) => {
-  try {
+router.get('/:id', handler.asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
-    // console.log("This is what's in book: ", book);
-    res.render('update-book', {book: book.dataValues});
-  } catch (error) {
-    console.error(error)
-  }
-});
+    book ? res.render('update-book', {book: book.dataValues}) : res.render('no-results');
+}, Book));
 
 /* UPDATEs book info and saves it to the database */
-router.post('/:id', async (req, res) => {
-  try {
+router.post('/:id', handler.asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
     await Book.update(req.body, {where: { id: book.id}});
     res.redirect('/books')
-  } catch (error) {
-    if (error.name === 'SequelizeValidationError') {
-      // do something here
-    }
-    console.error(error);
-  }
-});
+}, Book));
 
-/* DELETEs a book */
-router.get('/:id/delete', async (req, res) => {
-  try {
+/* Prepares a book for deletion */
+router.get('/:id/delete', handler.asyncHandler(async (req, res) => {
     let book = await Book.findByPk(req.params.id);
     book = book.dataValues
-    // await Book.destroy({where: {id: book.id}});
     res.render('delete-confirm', {book})
-  } catch (error) {
-    console.error(error);
-  }
-});
+}, Book));
 
-router.post('/:id/confirm', async (req, res) => {
-  try {
+/* DELETEs a book */
+router.post('/:id/confirm', handler.asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
     await Book.destroy({where: {id: book.id}});
     res.redirect('/books');
-  } catch (error) {
-    console.error("Oops, there was an error: ", error);
-  }
-});
+}, Book));
 
 module.exports = router;

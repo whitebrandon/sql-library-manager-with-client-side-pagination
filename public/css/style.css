@@ -248,4 +248,14 @@ input:focus {
   background: #fbe1c2;
 }
 
+.clear-cookie {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 8px;
+  margin-right: 16px;
+}
+.clear-cookie:hover {
+  color: #b3670b;
+}
+
 /*# sourceMappingURL=style.css.map */

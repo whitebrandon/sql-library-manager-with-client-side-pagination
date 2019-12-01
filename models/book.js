@@ -14,10 +14,26 @@ module.exports = (sequelize) => {
         title: {
             type: Sequelize.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please provide a value for "Title"',
+                },
+                notEmpty: {
+                    msg: 'Please provide a value for "Title"',
+                },
+            }
         },
         author: {
             type: Sequelize.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please provide a value for "Author"'
+                },
+                notEmpty: {
+                    msg: 'Please provide a value for "Author"'
+                },
+            },
         },
         genre: {
             type: Sequelize.STRING,

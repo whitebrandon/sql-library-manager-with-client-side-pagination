@@ -2,7 +2,7 @@ extends layout
 
 block content
     div.wrapper
-        include search-form
+        include included/search-form
         h1 Books
         p
             a.button.new-book(href='/books/new') Add New Title
@@ -22,4 +22,4 @@ block content
                         td= book.author
                         td= book.genre
                         td= book.year
-        include pagination
+        include included/pagination
