@@ -17,16 +17,23 @@ router.post('/', handler.asyncHandler(async (req, res) => {
 
 /* READs full list of books with/without cookies */
 router.get('/pg/:id', handler.asyncHandler(async (req, res) => {
+    let pageNum = parseInt(req.params.id);
+    pageNum < 0 ? pageNum = pageNum * (-1) : pageNum = pageNum;
     if (req.cookies.search_results) {
-        const books = await handler.searchWithCookie(Book, req.cookies.search_results, req.params.id);
+        const books = await handler.searchWithCookie(Book, req.cookies.search_results, pageNum);
+        if (books.count < pageNum * 10 -10) res.render('page-not-found');
         if (books.count > 0) {
-            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(req.params.id), hasCookie: true})
+            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(pageNum), hasCookie: true, searchString: req.cookies.search_results})
         } else {
             res.render('no-results');
         }
     } else {
-        const books = await Book.findAndCountAll({offset: (req.params.id * 10) - 10 , limit: 10})
-        res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(req.params.id)});
+        const books = await Book.findAndCountAll({offset: (pageNum * 10) - 10 , limit: 10});
+        if (books.count > pageNum * 10 - 10) {
+            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(pageNum)});
+        } else {
+            res.render('page-not-found');
+        }
     }
 }, Book));
 
@@ -37,6 +44,9 @@ router.get('/new', handler.asyncHandler(async (req, res) => {
 
 /* CREATEs a new book and adds it to the database */
 router.post('/new', handler.asyncHandler(async (req, res) => {
+    for (let fields of Object.keys(req.body)) {
+        req.body[fields] === "" ? req.body[fields] = null : req.body[fields] = req.body[fields];
+    }
     await Book.create(req.body);
     res.redirect('/books')
 }, Book));
@@ -49,6 +59,9 @@ router.get('/:id', handler.asyncHandler(async (req, res) => {
 
 /* UPDATEs book info and saves it to the database */
 router.post('/:id', handler.asyncHandler(async (req, res) => {
+    for (let fields of Object.keys(req.body)) {
+        req.body[fields] === "" ? req.body[fields] = null : req.body[fields] = req.body[fields];
+    }
     const book = await Book.findByPk(req.params.id);
     await Book.update(req.body, {where: { id: book.id}});
     res.redirect('/books')
@@ -57,15 +70,23 @@ router.post('/:id', handler.asyncHandler(async (req, res) => {
 /* Prepares a book for deletion */
 router.get('/:id/delete', handler.asyncHandler(async (req, res) => {
     let book = await Book.findByPk(req.params.id);
-    book = book.dataValues
-    res.render('delete-confirm', {book})
+    if (book) {
+        book = book.dataValues
+        res.render('delete-confirm', {book})
+    } else {
+        res.render('page-not-found');
+    }
 }, Book));
 
 /* DELETEs a book */
 router.post('/:id/confirm', handler.asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
-    await Book.destroy({where: {id: book.id}});
-    res.redirect('/books');
+    if (book) {
+        await Book.destroy({where: {id: book.id}});
+        res.redirect('/books');
+    } else {
+        res.render('page-not-found');
+    }
 }, Book));
 
 module.exports = router;

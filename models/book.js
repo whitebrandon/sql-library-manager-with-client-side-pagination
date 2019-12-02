@@ -1,7 +1,6 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-// const moment = require('moment');
 
 module.exports = (sequelize) => {
     class Book extends Sequelize.Model {};
@@ -39,7 +38,13 @@ module.exports = (sequelize) => {
             type: Sequelize.STRING,
         },
         year: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER(4),
+            allowNull: true,
+            validate: {
+                isNumeric: {
+                    msg: 'Please only provide numeric characters as a value for "Year"'
+                }
+            }
         },
     }, { sequelize })
 

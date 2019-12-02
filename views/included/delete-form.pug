@@ -1,5 +1,5 @@
 //- Includes Form
 form.delete-entry(method='get', action=`/books/${book.id}/delete`)
-    //- onsubmit="return confirm('Do you really want to delete this book?');")
+    p= "Do you want to delete " + book.title + " from the database?"
     p
-        input(type='submit', value='Delete Book')
+        input.delete-book(type='submit', value='Yes')
