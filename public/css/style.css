@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 * {
   box-sizing: border-box;
@@ -13,14 +14,21 @@ body {
   flex-wrap: wrap;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
+  margin: 0;
+  padding-bottom: 5px;
 }
 
 .app-banner {
   display: flex;
   width: 100%;
+  background-color: #999;
+  padding: 16px 16px 16px 16px;
 }
 .app-banner h1 {
   margin: 0 auto;
+}
+.app-banner h1 a:hover {
+  color: #595959;
 }
 
 .page-title {
@@ -41,9 +49,6 @@ body {
 .wrapper h1 {
   flex-grow: 1;
 }
-.wrapper h1:hover {
-  color: red;
-}
 .wrapper h1 ~ p {
   width: fit-content;
   padding: 6px 8px;
@@ -55,42 +60,92 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   margin-top: 16px;
+  padding: 0;
+  border: none;
+  background-color: inherit;
 }
 .book-search input {
   padding-left: 8px;
 }
 
-.clear-cookie {
+.cookie-wrapper {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
   order: -1;
+  background-color: #e6e6e6;
   margin-right: 16px;
-  align-self: flex-end;
+}
+
+.clear-cookie {
+  border: 1px solid #737373;
+  padding: 4px;
+  margin-right: 2px;
+  align-self: center;
+  box-shadow: -1px 0.5px 4px #000;
+}
+.clear-cookie:hover {
+  color: white;
+  background-color: #737373;
+}
+
+.search-query {
+  margin: 0 16px 0 0;
+  padding-left: 6px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  align-self: center;
+  font-weight: normal;
+  box-shadow: 2px 0 6px #000;
+}
+.search-query span {
+  font-family: "Courier New", Courier, monospace;
+  background-color: yellow;
+}
+.search-query span::before {
+  content: " ";
+}
+.search-query span::after {
+  content: " ";
 }
 
 .content-table-index {
   margin: auto;
   width: 100%;
   box-sizing: border-box;
-  border-collapse: collapse;
+  border-spacing: 32px 16px;
+}
+.content-table-index tr:hover {
+  background-color: #bfbfbf;
+}
+.content-table-index a {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 6px;
 }
 .content-table-index th {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 1.125em;
-  font-weight: 800;
-  border-bottom: 2px solid #111111;
-  border-top: 1px solid #999;
+  border-bottom: 4px solid #000;
   text-align: left;
-  padding: 7px 10px 10px 10px;
+  padding: 8px 6px;
 }
 .content-table-index td {
-  border: 2px solid rgba(0, 0, 0, 0.205);
-  padding: 7px 10px 10px 10px;
+  border: 2px solid #000;
+  padding: 8px 6px;
 }
-.content-table-index tr:hover {
-  background-color: #c3e6e5;
+.content-table-index td:first-child {
+  padding: 0;
 }
 .content-table-index tbody tr:nth-child(odd) {
-  background: #fbe1c2;
+  background: #737373;
+}
+.content-table-index tbody tr:nth-child(odd):hover {
+  background-color: #bfbfbf;
+}
+.content-table-index thead tr:first-child:hover {
+  background-color: inherit;
 }
 
 .pagination {
@@ -100,18 +155,23 @@ body {
   align-self: center;
 }
 .pagination a {
+  border-radius: 5px;
   padding: 0.5em 1em;
   margin: 0 0.5em;
 }
 .pagination a:hover {
-  background: #041219;
+  background: #404040;
 }
 .pagination .active, .pagination .active:hover {
-  background: #9b590a;
-  color: #041219;
+  background: #8c8c8c;
+  color: #000;
 }
 
 form {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 2em;
+  background-color: #999;
   margin: 0 auto;
   width: 50%;
   display: flex;
@@ -127,6 +187,35 @@ form p input {
 form p label {
   width: 48px;
   flex-grow: 1;
+}
+form a:hover {
+  color: #595959;
+}
+
+.new-book {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: inherit;
+}
+
+.save-book, .update-book, .delete-book, .confirm-delete-btn {
+  padding: 0.5em;
+  border: 1px solid #000;
+  cursor: pointer;
+  white-space: normal;
+}
+
+.delete-entry {
+  margin-top: 16px;
+}
+
+.wrapper .error-msg, .wrapper .error-msg ~ p {
+  width: 100%;
+}
+
+.instructions {
+  font-size: 55%;
+  color: #4d4d4d;
 }
 
 /*# sourceMappingURL=style.css.map */
