@@ -14,7 +14,7 @@ module.exports = {
                 await callback(req, res, next);
             } catch (error) {
                 if (error.name === "SequelizeValidationError") {
-                    res.render('form-error', { error: error.errors, book: await model['findByPk'](req.params.id)})
+                    res.render('form-error', { error: error.errors, book: await model['findByPk'](req.params.id), body: req.body})
                 } else {
                     res.status(500).send(error);
                     console.error(error);

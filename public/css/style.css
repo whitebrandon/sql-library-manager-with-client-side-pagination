@@ -4,31 +4,45 @@
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  color: initial;
+html {
+  background: linear-gradient(to bottom, #f9f1d1 25%, #ffe37d 66%, #e3b81b 95%);
+  background-size: cover;
+  height: 100vh;
 }
 
 body {
   display: flex;
   flex-wrap: wrap;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Courier New", sans-serif;
   font-size: 16px;
   margin: 0;
   padding-bottom: 5px;
 }
 
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+input:focus {
+  background-color: #717dff;
+}
+
 .app-banner {
   display: flex;
   width: 100%;
-  background-color: #999;
-  padding: 16px 16px 16px 16px;
+  min-height: 8vh;
+  background-color: #e3b81b;
+  padding-bottom: 4px;
+  border-bottom: 4px solid #050b4e;
 }
 .app-banner h1 {
   margin: 0 auto;
+  align-self: baseline;
+  font-size: 3em;
 }
 .app-banner h1 a:hover {
-  color: #595959;
+  color: #967600;
 }
 
 .page-title {
@@ -73,20 +87,20 @@ body {
   display: flex;
   justify-content: space-between;
   order: -1;
-  background-color: #e6e6e6;
+  background-color: #f4e3a3;
   margin-right: 16px;
 }
 
 .clear-cookie {
-  border: 1px solid #737373;
+  border: 1px solid #967600;
   padding: 4px;
   margin-right: 2px;
   align-self: center;
-  box-shadow: -1px 0.5px 4px #000;
+  box-shadow: -1px 0.5px 4px #1b2ce3;
 }
 .clear-cookie:hover {
-  color: white;
-  background-color: #737373;
+  color: #091596;
+  background-color: #967600;
 }
 
 .search-query {
@@ -96,7 +110,7 @@ body {
   padding-right: 2px;
   align-self: center;
   font-weight: normal;
-  box-shadow: 2px 0 6px #000;
+  box-shadow: 2px 0 6px #1b2ce3;
 }
 .search-query span {
   font-family: "Courier New", Courier, monospace;
@@ -113,10 +127,10 @@ body {
   margin: auto;
   width: 100%;
   box-sizing: border-box;
-  border-spacing: 32px 16px;
+  border-spacing: 0.5em 0.75em;
 }
 .content-table-index tr:hover {
-  background-color: #bfbfbf;
+  background-color: #ecce5f;
 }
 .content-table-index a {
   display: inline-block;
@@ -127,22 +141,22 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 1.125em;
-  border-bottom: 4px solid #000;
+  border-bottom: 4px solid #1b2ce3;
   text-align: left;
   padding: 8px 6px;
 }
 .content-table-index td {
-  border: 2px solid #000;
+  border: 2px solid #1b2ce3;
   padding: 8px 6px;
 }
 .content-table-index td:first-child {
   padding: 0;
 }
 .content-table-index tbody tr:nth-child(odd) {
-  background: #737373;
+  background: #967600;
 }
 .content-table-index tbody tr:nth-child(odd):hover {
-  background-color: #bfbfbf;
+  background-color: #ecce5f;
 }
 .content-table-index thead tr:first-child:hover {
   background-color: inherit;
@@ -160,18 +174,18 @@ body {
   margin: 0 0.5em;
 }
 .pagination a:hover {
-  background: #404040;
+  background: #967600;
 }
 .pagination .active, .pagination .active:hover {
-  background: #8c8c8c;
-  color: #000;
+  background: #cca618;
+  color: #1b2ce3;
 }
 
 form {
-  border: 1px solid #000;
+  border: 1px solid #1b2ce3;
   border-radius: 5px;
   padding: 2em;
-  background-color: #999;
+  background-color: #e3b81b;
   margin: 0 auto;
   width: 50%;
   display: flex;
@@ -189,20 +203,27 @@ form p label {
   flex-grow: 1;
 }
 form a:hover {
-  color: #595959;
+  color: #967600;
 }
 
 .new-book {
-  border: 1px solid #000;
+  border: 1px solid #1b2ce3;
   border-radius: 5px;
   padding: inherit;
+}
+.new-book:hover {
+  background-color: #717dff;
 }
 
 .save-book, .update-book, .delete-book, .confirm-delete-btn {
   padding: 0.5em;
-  border: 1px solid #000;
+  border: 1px solid #1b2ce3;
+  border-radius: 5px;
   cursor: pointer;
   white-space: normal;
+}
+.save-book:hover, .update-book:hover, .delete-book:hover, .confirm-delete-btn:hover {
+  background-color: #717dff;
 }
 
 .delete-entry {
@@ -215,7 +236,18 @@ form a:hover {
 
 .instructions {
   font-size: 55%;
-  color: #4d4d4d;
+  color: #717dff;
+}
+
+h2.error {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+ul.error {
+  list-style: none;
+  padding-left: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
