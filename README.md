@@ -26,7 +26,7 @@ $ npm install
 Run project via node:
 
 ```
-$ node app.js
+$ node ./bin/www
 ```
 
 or npm:
@@ -40,19 +40,16 @@ Navigate to `localhost:3000` in web browser
 
 A live version of this web app can be found by clicking on the following link:
 
-[The Link]()
+[Library Management App](https://powerful-tundra-49382.herokuapp.com/)
 
 ## Built With
 
-* Node.js
-* [Express]() - ""
-* [Pug]() - ""
-* [Sequelize/SQLite]() - ""
-* [Sass]() - ""
+* [Node.js](https://nodejs.org/en/about/) - "JavaScript runtime environment"
+* [Express](https://expressjs.com/en/4x/api.html) - "Web Framework"
+* [Pug](https://pugjs.org/api/getting-started.html) - "Template Engine"
+* [Sequelize/SQLite]() - "A promised-based ORM for Node.js"
+* [Sass](https://sass-lang.com/) - "CSS preprocessor"
 
 ## License
 
 This project is licensed under the MIT License.
-
-## Acknowledgments
-* ""
