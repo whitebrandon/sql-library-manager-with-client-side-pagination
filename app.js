@@ -1,3 +1,10 @@
+/******************************************
+Treehouse Techdegree:
+FSJS project 8 - SQL Library Manager
+Name: Brandon White
+Date of Last Modification: 03/12/2019
+******************************************/
+
 // Modules
 const createError = require('http-errors');
 const express = require('express');
