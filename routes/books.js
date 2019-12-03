@@ -17,8 +17,9 @@ router.post('/', handler.asyncHandler(async (req, res) => {
 
 /* READs full list of books with/without cookies */
 router.get('/pg/:id', handler.asyncHandler(async (req, res) => {
-    let pageNum = parseInt(req.params.id);
-    pageNum < 0 ? pageNum = pageNum * (-1) : pageNum = pageNum;
+    let pageNum = Math.floor(parseInt(req.params.id));
+    // ↓ Edge case that insures user can't enter a negative or float for page number 
+    pageNum < 0 || req.params.id % 1 !== 0 ? res.redirect(`/books/pg/${-pageNum}`) : null;
     if (req.cookies.search_results) {
         const books = await handler.searchWithCookie(Book, req.cookies.search_results, pageNum);
         if (books.count < pageNum * 10 -10) res.render('page-not-found');

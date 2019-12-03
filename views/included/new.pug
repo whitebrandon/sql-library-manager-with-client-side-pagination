@@ -2,16 +2,16 @@
     form.create-entry(action='/books/new', method='post')
         p
             label(for='title') Title
-            input#title(name='title', type='text')
+            input#title(name='title', type='text', value=body ? body.title : null)
         p
             label(for='author') Author
-            input#author(name='author', type='text')
+            input#author(name='author', type='text', value=body ? body.author: null)
         p
             label(for='genre') Genre
-            input#genre(name='genre', type='text')
+            input#genre(name='genre', type='text', value=body ? body.genre: null)
         p
             label(for='year') Year
-            input#year(name='year', type='text')
+            input#year(name='year', type='text', value=body ? body.year: null)
         hr
         p
             input.save-book(type='submit', value='Create New Book')
