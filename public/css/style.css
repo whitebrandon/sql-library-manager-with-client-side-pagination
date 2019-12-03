@@ -20,7 +20,7 @@ sytle.css
 html {
   background: linear-gradient(to bottom, #f9f1d1 25%, #ffe37d 66%, #e3b81b 95%);
   background-size: cover;
-  height: 100vh;
+  min-height: 100%;
 }
 
 body,
