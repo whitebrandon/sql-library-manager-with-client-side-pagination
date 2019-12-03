@@ -8,7 +8,7 @@
     "storage": "library.db"
   },
   "production": {
-    "dialect": "sqlite",
+    "dialect": "mysql",
     "storage": "library.db"
   }
 }
