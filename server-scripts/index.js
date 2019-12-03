@@ -1,3 +1,10 @@
+/******************************************
+Treehouse Techdegree:
+FSJS project 8 - SQL Library Manager
+Name: Brandon White
+Date of Last Modification: 03/12/2019
+******************************************/
+
 const Sequelize = require('sequelize');
 const { Op } = Sequelize
 
@@ -37,6 +44,7 @@ module.exports = {
                 where: {[Op.or]: argument},
                 offset: pageNumber ? (pageNumber * 10) - 10 : null, 
                 limit: pageNumber ? 10 : null,
+                order: [['createdAt', 'DESC']]
             })
         );
     },

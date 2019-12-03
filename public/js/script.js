@@ -5,12 +5,11 @@ Name: Brandon White
 Date of Last Modification: 03/12/2019
 ******************************************/
 
-const express = require('express');
-const router = express.Router();
+'strict';
 
-/* Redirects to /books, which is the homepage */
-router.get('/', (req, res) => {
-  res.redirect('/books');
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputs = [...document.getElementsByTagName('input')];
 
-module.exports = router;
+        inputs[0].name !== "search" ? inputs[0].focus() : null;
+    })
+

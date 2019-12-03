@@ -1,4 +1,17 @@
 @charset "UTF-8";
+/******************************************
+Treehouse Techdegree:
+FSJS project 8 - SQL Library Manager
+Name: Brandon White
+Date of Last Modification: 03/12/2019
+sytle.css
+******************************************/
+/**
+
+
+/* ================================= 
+  Base Element Styles
+==================================== */
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 * {
   box-sizing: border-box;
@@ -10,10 +23,15 @@ html {
   height: 100vh;
 }
 
+body,
+input,
+button {
+  font-family: "Raleway", "Courier New", sans-serif;
+}
+
 body {
   display: flex;
   flex-wrap: wrap;
-  font-family: "Raleway", "Courier New", sans-serif;
   font-size: 16px;
   margin: 0;
   padding-bottom: 5px;
@@ -23,106 +41,17 @@ a {
   text-decoration: none;
   color: initial;
 }
-
-input:focus {
-  background-color: #717dff;
-}
-
-.app-banner {
-  display: flex;
-  width: 100%;
-  min-height: 8vh;
-  background-color: #e3b81b;
-  padding-bottom: 4px;
-  border-bottom: 4px solid #050b4e;
-}
-.app-banner h1 {
-  margin: 0 auto;
-  align-self: baseline;
-  font-size: 3em;
-}
-.app-banner h1 a:hover {
+a:hover {
   color: #967600;
 }
 
-.page-title {
-  width: 100%;
-  text-align: center;
-}
-
-.wrapper {
-  max-width: 1078px;
-  display: flex;
-  margin: 0 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-self: center;
-  align-items: center;
-  justify-content: space-around;
-}
-.wrapper h1 {
-  flex-grow: 1;
-}
-.wrapper h1 ~ p {
-  width: fit-content;
-  padding: 6px 8px;
-}
-
-.book-search {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: 16px;
-  padding: 0;
-  border: none;
-  background-color: inherit;
-}
-.book-search input {
-  padding-left: 8px;
-}
-
-.cookie-wrapper {
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
-  order: -1;
-  background-color: #f4e3a3;
-  margin-right: 16px;
-}
-
-.clear-cookie {
-  border: 1px solid #967600;
-  padding: 4px;
-  margin-right: 2px;
-  align-self: center;
-  box-shadow: -1px 0.5px 4px #1b2ce3;
-}
-.clear-cookie:hover {
+::placeholder {
   color: #091596;
-  background-color: #967600;
 }
 
-.search-query {
-  margin: 0 16px 0 0;
-  padding-left: 6px;
-  padding-bottom: 2px;
-  padding-right: 2px;
-  align-self: center;
-  font-weight: normal;
-  box-shadow: 2px 0 6px #1b2ce3;
-}
-.search-query span {
-  font-family: "Courier New", Courier, monospace;
-  background-color: yellow;
-}
-.search-query span::before {
-  content: " ";
-}
-.search-query span::after {
-  content: " ";
-}
-
+/* ================================= 
+  Table Element Styles
+==================================== */
 .content-table-index {
   margin: auto;
   width: 100%;
@@ -162,25 +91,14 @@ input:focus {
   background-color: inherit;
 }
 
-.pagination {
-  display: inline-flex;
-  justify-content: center;
-  width: 100%;
-  align-self: center;
-}
-.pagination a {
-  border-radius: 5px;
-  padding: 0.5em 1em;
-  margin: 0 0.5em;
-}
-.pagination a:hover {
-  background: #967600;
-}
-.pagination .active, .pagination .active:hover {
-  background: #cca618;
-  color: #1b2ce3;
+.instructions {
+  font-size: 55%;
+  color: #717dff;
 }
 
+/* ================================= 
+  Form Element Styles
+==================================== */
 form {
   border: 1px solid #1b2ce3;
   border-radius: 5px;
@@ -190,6 +108,9 @@ form {
   width: 50%;
   display: flex;
   flex-wrap: wrap;
+}
+form input:focus {
+  background-color: #717dff;
 }
 form p {
   width: 100%;
@@ -206,37 +127,54 @@ form a:hover {
   color: #967600;
 }
 
-.new-book {
-  border: 1px solid #1b2ce3;
-  border-radius: 5px;
-  padding: inherit;
+.book-search {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 16px;
+  padding: 0;
+  border: none;
+  background-color: inherit;
 }
-.new-book:hover {
-  background-color: #717dff;
+.book-search input {
+  padding-left: 8px;
 }
 
-.save-book, .update-book, .delete-book, .confirm-delete-btn {
-  padding: 0.5em;
+.new-book,
+.save-book,
+.update-book,
+.delete-book,
+.confirm-delete-btn {
   border: 1px solid #1b2ce3;
   border-radius: 5px;
   cursor: pointer;
   white-space: normal;
 }
-.save-book:hover, .update-book:hover, .delete-book:hover, .confirm-delete-btn:hover {
+.new-book:hover,
+.save-book:hover,
+.update-book:hover,
+.delete-book:hover,
+.confirm-delete-btn:hover {
   background-color: #717dff;
+}
+
+.save-book,
+.update-book,
+.delete-book,
+.confirm-delete-btn {
+  padding: 0.5em;
+}
+
+.new-book {
+  padding: inherit;
+}
+.new-book:hover {
+  color: #091596;
 }
 
 .delete-entry {
   margin-top: 16px;
-}
-
-.wrapper .error-msg, .wrapper .error-msg ~ p {
-  width: 100%;
-}
-
-.instructions {
-  font-size: 55%;
-  color: #717dff;
 }
 
 h2.error {
@@ -248,6 +186,122 @@ h2.error {
 ul.error {
   list-style: none;
   padding-left: 0;
+}
+
+/* ================================= 
+  Cookie Styles
+==================================== */
+.cookie-wrapper {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  order: -1;
+  background-color: #f4e3a3;
+  margin-right: 16px;
+}
+
+.clear-cookie,
+.search-query {
+  align-self: center;
+}
+
+.clear-cookie {
+  border: 1px solid #967600;
+  padding: 4px;
+  margin-right: 2px;
+  box-shadow: -1px 0.5px 4px #1b2ce3;
+}
+.clear-cookie:hover {
+  color: #091596;
+  background-color: #967600;
+}
+
+.search-query {
+  margin: 0 16px 0 0;
+  padding-left: 6px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  font-weight: normal;
+  box-shadow: 2px 0 6px #1b2ce3;
+}
+.search-query span {
+  font-family: "Courier New", Courier, monospace;
+  background-color: yellow;
+}
+.search-query span::before {
+  content: " ";
+}
+.search-query span::after {
+  content: " ";
+}
+
+/* ================================= 
+  Page Styles
+==================================== */
+.app-banner {
+  display: flex;
+  width: 100%;
+  min-height: 8vh;
+  background-color: #e3b81b;
+  padding-bottom: 4px;
+  border-bottom: 4px solid #050b4e;
+  box-shadow: 4px 4px 16px;
+}
+.app-banner h1 {
+  margin: 0 auto;
+  align-self: baseline;
+  font-size: 3em;
+}
+.app-banner h1 a:hover {
+  color: #967600;
+}
+
+.wrapper {
+  max-width: 1078px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.wrapper h1 {
+  flex-grow: 1;
+}
+.wrapper h1 ~ p {
+  width: fit-content;
+  padding: 6px 8px;
+}
+.wrapper .error-msg,
+.wrapper .error-msg ~ p {
+  width: 100%;
+}
+
+.page-title {
+  width: 100%;
+  text-align: center;
+}
+
+.pagination {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  align-self: center;
+}
+.pagination a {
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+}
+.pagination a:hover {
+  background: #967600;
+  color: inherit;
+}
+.pagination .active,
+.pagination .active:hover {
+  background: #cca618;
+  color: #1b2ce3;
 }
 
 /*# sourceMappingURL=style.css.map */
