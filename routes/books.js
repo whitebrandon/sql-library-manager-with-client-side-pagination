@@ -29,7 +29,7 @@ router.get('/pg/:id', handler.asyncHandler(async (req, res) => {
             res.render('no-results');
         }
     } else {
-        const books = await Book.findAndCountAll({offset: (pageNum * 10) - 10 , limit: 10});
+        const books = await Book.findAndCountAll({offset: (pageNum * 10) - 10 , limit: 10, order: [['createdAt','DESC']]});
         if (books.count > pageNum * 10 - 10) {
             res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(pageNum)});
         } else {

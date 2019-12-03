@@ -37,6 +37,7 @@ module.exports = {
                 where: {[Op.or]: argument},
                 offset: pageNumber ? (pageNumber * 10) - 10 : null, 
                 limit: pageNumber ? 10 : null,
+                order: [['createdAt', 'DESC']]
             })
         );
     },
