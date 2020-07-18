@@ -18,8 +18,7 @@ block content
                     tr
                         td
                             - var offset = (active * 10)
-                            a(href=`/books/${book.id}`)= (i + offset - 9) + ': ' + book.title
+                            a(href=`/books/${book.id}`)= i+1 + ': ' + book.title
                         td= book.author
                         td= book.genre
                         td= book.year
-        include included/pagination

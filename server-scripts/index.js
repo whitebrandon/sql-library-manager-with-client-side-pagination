@@ -34,16 +34,13 @@ module.exports = {
      * Uses a 'search_result(s)' cookie to search database
      * @param {Object} model - the Model instance
      * @param {String} query - the search string to compare against the Model
-     * @param {Integer} pageNumber - the number of the page corresponding with results 
      */
-    searchWithCookie: (model, query, pageNumber) => {
+    searchWithCookie: (model, query) => {
         const attributes = ['title', 'author', 'genre', 'year'];
         const argument = attributes.map(attribute => ({[attribute]: {[Op.like]: `%${query}%`}}));
         return (
-            model['findAndCountAll']({
+            model['findAll']({
                 where: {[Op.or]: argument},
-                offset: pageNumber ? (pageNumber * 10) - 10 : null, 
-                limit: pageNumber ? 10 : null,
                 order: [['createdAt', 'DESC']]
             })
         );

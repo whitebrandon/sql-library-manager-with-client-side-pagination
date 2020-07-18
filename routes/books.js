@@ -23,27 +23,12 @@ router.post('/', handler.asyncHandler(async (req, res) => {
 }, Book));
 
 /* READs full list of books with/without cookies */
-router.get('/pg/:id', handler.asyncHandler(async (req, res) => {
+router.get('/pg/:id', async (req, res, next) => {
     let pageNum = Math.floor(parseInt(req.params.id));
-    // ↓ Edge case that insures user can't enter a negative or float for page number 
     pageNum < 0 || req.params.id % 1 !== 0 ? res.redirect(`/books/pg/${-pageNum}`) : null;
-    if (req.cookies.search_results) {
-        const books = await handler.searchWithCookie(Book, req.cookies.search_results, pageNum);
-        if (books.count < pageNum * 10 -10) res.render('page-not-found');
-        if (books.count > 0) {
-            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(pageNum), hasCookie: true, searchString: req.cookies.search_results})
-        } else {
-            res.render('no-results');
-        }
-    } else {
-        const books = await Book.findAndCountAll({offset: (pageNum * 10) - 10 , limit: 10, order: [['createdAt','DESC']]});
-        if (books.count > pageNum * 10 - 10) {
-            res.render('index', {books: books.rows, fullResults: books.count, active: parseInt(pageNum)});
-        } else {
-            res.render('page-not-found');
-        }
-    }
-}, Book));
+    const books = await Book.findAll({order: [['createdAt', 'DESC']]});
+    pageNum > Math.ceil(books.length/10) ? res.render('page-not-found') : res.render('index', { books });
+});
 
 /* READs the "create a new book" form. */
 router.get('/new', handler.asyncHandler(async (req, res) => {
