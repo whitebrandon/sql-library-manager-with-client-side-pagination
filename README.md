@@ -1,8 +1,4 @@
-# TECH DEGREE PROJECT #8 | SQL LIBRARY MANAGER
-
-a COURSE BY TREEHOUSE
-
-JS CODE by Brandon White | white.brandonsean@gmail.com
+# SQL LIBRARY MANAGER (with Client-Side pagination)
 
 An library management app utlizing a database.
 

@@ -1,8 +1,7 @@
 /******************************************
-Treehouse Techdegree:
-FSJS project 8 - SQL Library Manager
+SQL Library Manager
 Name: Brandon White
-Date of Last Modification: 03/12/2019
+Date of Last Modification: 17/07/2020
 ******************************************/
 
 'use strict';

@@ -1,3 +1,9 @@
+/******************************************
+SQL Library Manager
+Name: Brandon White
+Date of Last Modification: 17/07/2020
+******************************************/
+
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.querySelector('.wrapper');
     const rows = [...document.querySelectorAll('tbody tr')];
